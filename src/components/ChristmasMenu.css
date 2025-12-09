@@ -1,0 +1,735 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Noto+Serif+KR:wght@200;300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Great+Vibes&display=swap');
+
+/* ═══════════════════════════════════════════════════════════════
+   RESET & BASE STYLES
+═══════════════════════════════════════════════════════════════ */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Noto Serif KR', serif;
+    line-height: 1.6;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TYPOGRAPHY
+═══════════════════════════════════════════════════════════════ */
+.font-display { font-family: 'Playfair Display', serif; }
+.font-elegant { font-family: 'Cormorant Garamond', serif; }
+.font-script { font-family: 'Great Vibes', cursive; }
+.font-korean { font-family: 'Noto Serif KR', serif; }
+
+/* ═══════════════════════════════════════════════════════════════
+   COLOR PALETTE
+═══════════════════════════════════════════════════════════════ */
+:root {
+    --deep-burgundy: #4a1c1c;
+    --rich-red: #7a1d1d;
+    --gold: #c9a962;
+    --gold-dark: #8b7355;
+    --cream: #fdfbf7;
+    --warm-gray: #666;
+    --dark: #1a1a1a;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   FULL WIDTH PAGE CONTAINER
+═══════════════════════════════════════════════════════════════ */
+.page-fullwidth {
+    width: 100%;
+    min-height: 100vh;
+    background: #fdfbf7;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Paper texture overlay for full width */
+.page-fullwidth::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23fff' surfaceScale='2'%3E%3CfeDistantLight azimuth='45' elevation='60'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E");
+    opacity: 0.02;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   COVER PAGE - FULL WIDTH
+═══════════════════════════════════════════════════════════════ */
+.cover-page {
+    background: var(--dark);
+    color: #fff;
+    position: relative;
+}
+
+.cover-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(180deg, 
+            rgba(0,0,0,0.4) 0%, 
+            rgba(0,0,0,0.2) 30%,
+            rgba(0,0,0,0.3) 70%,
+            rgba(0,0,0,0.7) 100%
+        );
+    background-size: cover;
+    background-position: center;
+}
+
+/* Snowfall Animation */
+.snowflakes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.snowflake {
+    position: absolute;
+    top: -10px;
+    color: #fff;
+    font-size: 1em;
+    opacity: 0.8;
+    animation: snowfall linear infinite;
+}
+
+@keyframes snowfall {
+    0% { transform: translateY(-10px) rotate(0deg); opacity: 0.8; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0.2; }
+}
+
+.snowflake:nth-child(1) { left: 5%; animation-duration: 8s; animation-delay: 0s; font-size: 0.8em; }
+.snowflake:nth-child(2) { left: 15%; animation-duration: 12s; animation-delay: 1s; font-size: 1.2em; }
+.snowflake:nth-child(3) { left: 25%; animation-duration: 10s; animation-delay: 2s; font-size: 0.6em; }
+.snowflake:nth-child(4) { left: 35%; animation-duration: 14s; animation-delay: 0.5s; font-size: 1em; }
+.snowflake:nth-child(5) { left: 45%; animation-duration: 9s; animation-delay: 3s; font-size: 0.9em; }
+.snowflake:nth-child(6) { left: 55%; animation-duration: 11s; animation-delay: 1.5s; font-size: 1.1em; }
+.snowflake:nth-child(7) { left: 65%; animation-duration: 13s; animation-delay: 2.5s; font-size: 0.7em; }
+.snowflake:nth-child(8) { left: 75%; animation-duration: 8.5s; animation-delay: 4s; font-size: 1em; }
+.snowflake:nth-child(9) { left: 85%; animation-duration: 10.5s; animation-delay: 0.8s; font-size: 0.85em; }
+.snowflake:nth-child(10) { left: 95%; animation-duration: 15s; animation-delay: 1.2s; font-size: 0.95em; }
+
+.cover-content {
+    position: relative;
+    z-index: 10;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 60px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cover-frame {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+    border: 1px solid rgba(201, 169, 98, 0.4);
+    pointer-events: none;
+}
+
+.cover-frame::before,
+.cover-frame::after {
+    content: '✦';
+    position: absolute;
+    color: var(--gold);
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+.cover-frame::before { top: -6px; left: 50%; transform: translateX(-50%); }
+.cover-frame::after { bottom: -6px; left: 50%; transform: translateX(-50%); }
+
+.magazine-header {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.vol-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-bottom: 12px;
+}
+
+.header-line {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 16px auto;
+}
+
+.private-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    letter-spacing: 3px;
+    color: var(--gold);
+}
+
+.cover-main {
+    text-align: center;
+    padding: 0 20px;
+}
+
+.main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    text-shadow: 0 4px 30px rgba(0,0,0,0.5);
+}
+
+.main-title span {
+    display: block;
+    font-family: 'Great Vibes', cursive;
+    font-size: 90px;
+    color: var(--gold);
+    margin-top: 10px;
+    letter-spacing: 0;
+}
+
+.subtitle {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 300;
+    font-size: 18px;
+    letter-spacing: 2px;
+    opacity: 0.9;
+}
+
+.cover-footer {
+    text-align: center;
+}
+
+.date-display {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 48px;
+    color: var(--gold);
+    margin-bottom: 15px;
+}
+
+.date-korean {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 300;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.location-text {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MENU PAGES - FULL WIDTH
+═══════════════════════════════════════════════════════════════ */
+.menu-page {
+    display: flex;
+    flex-direction: column;
+    background: var(--cream);
+}
+
+.menu-banner {
+    width: 100%;
+    height: 40vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.menu-banner::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(transparent, var(--cream));
+}
+
+.page-number {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: #fff;
+    background: rgba(0,0,0,0.3);
+    padding: 12px 20px;
+    backdrop-filter: blur(5px);
+}
+
+.dish-number {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 120px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+
+.menu-content {
+    flex: 1;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.category-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    margin-bottom: 12px;
+}
+
+.dish-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: 25px;
+    line-height: 1.2;
+}
+
+.dish-meaning {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(201, 169, 98, 0.3);
+}
+
+.meaning-icon {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: var(--gold);
+    flex-shrink: 0;
+}
+
+.meaning-text {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--rich-red);
+    font-style: italic;
+    line-height: 1.5;
+}
+
+.dish-description {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--warm-gray);
+    line-height: 1.9;
+    word-break: keep-all;
+    max-width: 800px;
+}
+
+.decorative-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.decorative-line span {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+}
+
+.decorative-line::before {
+    content: '◆';
+    font-size: 10px;
+    color: var(--gold);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LETTER PAGE - FULL WIDTH
+═══════════════════════════════════════════════════════════════ */
+.letter-page {
+    background: var(--deep-burgundy);
+    position: relative;
+    overflow: hidden;
+}
+
+.letter-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(135deg, 
+            rgba(74, 28, 28, 0.95) 0%, 
+            rgba(40, 15, 15, 0.98) 100%
+        );
+    background-size: cover;
+    background-position: center;
+}
+
+.letter-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+}
+
+.letter-content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    height: 100vh;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+}
+
+.letter-frame {
+    position: relative;
+    border: 1px solid rgba(201, 169, 98, 0.3);
+    padding: 80px 60px;
+    max-width: 800px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 700px;
+}
+
+.corner-decoration {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(201, 169, 98, 0.25);
+}
+
+.corner-tl {
+    top: 12px;
+    left: 12px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.corner-tr {
+    top: 12px;
+    right: 12px;
+    border-left: none;
+    border-bottom: none;
+}
+
+.corner-bl {
+    bottom: 12px;
+    left: 12px;
+    border-right: none;
+    border-top: none;
+}
+
+.corner-br {
+    bottom: 12px;
+    right: 12px;
+    border-left: none;
+    border-top: none;
+}
+
+.letter-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 48px;
+    color: var(--gold);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.letter-body {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 2;
+    color: rgba(255,255,255,0.9);
+    flex: 1;
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+.letter-body strong {
+    font-weight: 500;
+    color: var(--gold);
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.signature-area {
+    border-top: 1px solid rgba(201, 169, 98, 0.3);
+    padding-top: 20px;
+    width: 70%;
+}
+
+.signature-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 8px;
+}
+
+.signature-name {
+    font-family: 'Great Vibes', cursive;
+    font-size: 36px;
+    color: var(--gold);
+}
+
+.heart-icon {
+    color: var(--gold);
+    font-size: 18px;
+    margin-top: 12px;
+    margin-bottom: 8px;
+    opacity: 0.8;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ORIGINAL PAGE STYLES FOR PDF GENERATION (HIDDEN)
+═══════════════════════════════════════════════════════════════ */
+.page {
+    width: 420px;
+    aspect-ratio: 3 / 4.5;
+    background: #fdfbf7;
+    box-shadow: 
+        0 25px 80px rgba(0,0,0,0.6),
+        0 0 0 1px rgba(255,255,255,0.05),
+        inset 0 0 100px rgba(139, 90, 43, 0.03);
+    position: relative;
+    overflow: hidden;
+}
+
+.page::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23fff' surfaceScale='2'%3E%3CfeDistantLight azimuth='45' elevation='60'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E");
+    opacity: 0.02;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.page .cover-content {
+    padding: 35px 25px;
+}
+
+.page .main-title {
+    font-size: 48px;
+}
+
+.page .main-title span {
+    font-size: 60px;
+}
+
+.page .date-display {
+    font-size: 36px;
+}
+
+.page .menu-content {
+    padding: 30px 30px 40px;
+}
+
+.page .dish-name {
+    font-size: 26px;
+}
+
+.page .letter-content {
+    padding: 20px;
+    height: 100%;
+}
+
+.page .letter-frame {
+    padding: 30px 25px;
+    min-height: auto;
+}
+
+.page .letter-title {
+    font-size: 36px;
+}
+
+.page .letter-body {
+    font-size: 12px;
+}
+
+.page .signature-name {
+    font-size: 28px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE DESIGN
+═══════════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+    .cover-content {
+        padding: 40px 30px;
+    }
+    
+    .main-title {
+        font-size: 56px;
+    }
+    
+    .main-title span {
+        font-size: 70px;
+    }
+    
+    .menu-content {
+        padding: 40px;
+    }
+    
+    .dish-name {
+        font-size: 36px;
+    }
+    
+    .letter-content {
+        padding: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cover-content {
+        padding: 30px 20px;
+    }
+    
+    .main-title {
+        font-size: 42px;
+    }
+    
+    .main-title span {
+        font-size: 52px;
+    }
+    
+    .menu-content {
+        padding: 30px 20px;
+    }
+    
+    .dish-name {
+        font-size: 28px;
+    }
+    
+    .dish-number {
+        font-size: 80px;
+        left: 20px;
+        bottom: 20px;
+    }
+    
+    .letter-content {
+        padding: 30px 20px;
+    }
+    
+    .letter-frame {
+        padding: 40px 20px;
+    }
+    
+    .letter-title {
+        font-size: 36px;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PRINT STYLES FOR PDF
+═══════════════════════════════════════════════════════════════ */
+@media print {
+    body {
+        background: white !important;
+        padding: 0 !important;
+    }
+    
+    body::before {
+        display: none !important;
+    }
+    
+    .page {
+        max-width: none !important;
+        width: 210mm !important;
+        height: 297mm !important;
+        aspect-ratio: unset !important;
+        box-shadow: none !important;
+        page-break-after: always;
+        margin: 0 !important;
+    }
+    
+    .page:last-child {
+        page-break-after: avoid;
+    }
+    
+    .print\\:hidden {
+        display: none !important;
+    }
+}
