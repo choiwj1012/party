@@ -664,15 +664,58 @@ body::before {
 
 @media (max-width: 768px) {
     .cover-content {
-        padding: 30px 20px;
+        padding: 20px 15px;
+        justify-content: space-evenly;
+    }
+    
+    .cover-frame {
+        top: 20px;
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+    }
+    
+    .magazine-header {
+        padding: 20px 0;
+    }
+    
+    .vol-text {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+    
+    .private-text {
+        font-size: 12px;
+        letter-spacing: 2px;
     }
     
     .main-title {
-        font-size: 42px;
+        font-size: 48px;
+        line-height: 1.1;
+        margin-bottom: 15px;
     }
     
     .main-title span {
-        font-size: 52px;
+        font-size: 56px;
+        margin-top: 5px;
+    }
+    
+    .subtitle {
+        font-size: 14px;
+    }
+    
+    .date-display {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+    
+    .date-korean {
+        font-size: 13px;
+        margin-bottom: 8px;
+    }
+    
+    .location-text {
+        font-size: 12px;
     }
     
     .menu-content {
